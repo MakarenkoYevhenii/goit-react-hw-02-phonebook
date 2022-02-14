@@ -20,7 +20,6 @@ class App extends Component {
     e.preventDefault();
     // console.log(this.state.name,this.state.number);
     this.addContact(this.state.name, this.state.number);
-    this.resetForm()
   };
   handleChange = e => {
     const { name, value } = e.target;
@@ -57,7 +56,6 @@ class App extends Component {
     }
     
     const filterStr = filter.toLowerCase()
-    console.log(filterStr);
     const result = contacts.filter(item => {
         const title = item.name.toLowerCase();
         return title.includes(filterStr);

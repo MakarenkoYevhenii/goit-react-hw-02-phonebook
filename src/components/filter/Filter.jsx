@@ -1,5 +1,6 @@
+import PropTypes from 'prop-types';
 
-const Filter = ({filter, handleChange}) => {
+const Filter = ({filter, handleChange}) => {    
     return (
 
         <div className="form-group">
@@ -10,3 +11,8 @@ const Filter = ({filter, handleChange}) => {
 }
 
 export default Filter;
+
+Filter.propTypes={
+    filter:PropTypes.string.isRequired,
+    handleChange:PropTypes.func.isRequired,
+}

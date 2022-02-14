@@ -1,6 +1,8 @@
 import styles from '../contactList/contactForm.module.css'
+import PropTypes from 'prop-types';
 
     const ContactList = ({names, removeHuman}) => {
+        console.log(names, removeHuman);
         const elements = names.map(item => <li key={item.id} className={styles.items}>
             <p className={styles.people__items}>{item.name}: {item.number}</p> <button className={styles.form__delete__button} onClick={()=>removeHuman(item.id)}>Delete</button>
         </li>);
@@ -13,4 +15,13 @@ import styles from '../contactList/contactForm.module.css'
     }
 
 export default ContactList;
-{/* <button onClick={()=>removeBook(item.id)}>Delete</button> */}
+
+ContactList.propTypes={
+    names:PropTypes.shape({
+        id:PropTypes.string.isRequired,
+        name:PropTypes.string.isRequired,
+        number:PropTypes.string.isRequired,
+
+    }).isRequired,
+    handleChange:PropTypes.func.isRequired,
+}

@@ -1,4 +1,5 @@
 import styles from '../contactForm/contactForm.module.css'
+import PropTypes from 'prop-types';
 
 const ContactForm = ({handleSubmit, handleChange}) => {
     return (
@@ -19,7 +20,7 @@ const ContactForm = ({handleSubmit, handleChange}) => {
               onChange={handleChange}
               type="tel"
               name="number"
-              // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               required
               className={styles.registration__input}
@@ -31,3 +32,8 @@ const ContactForm = ({handleSubmit, handleChange}) => {
   }
 
 export default ContactForm;
+
+ContactForm.propTypes={
+handleChange:PropTypes.func.isRequired,
+handleSubmit:PropTypes.func.isRequired,
+}
