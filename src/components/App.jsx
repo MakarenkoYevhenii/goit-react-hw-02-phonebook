@@ -16,16 +16,10 @@ class App extends Component {
     number: '',
     filter:'',
   };
-  resetForm(){
-    this.setState({
-        title: "",
-        author: ""
-    });
-}
   handleSubmit = e => {
     e.preventDefault();
     // console.log(this.state.name,this.state.number);
-    this.addBook(this.state.name, this.state.number);
+    this.addContact(this.state.name, this.state.number);
     this.resetForm()
   };
   handleChange = e => {
@@ -36,7 +30,7 @@ class App extends Component {
     });
   };
   
-  addBook = (name, number) => {
+  addContact = (name, number) => {
     const { contacts } = this.state;
     const result = contacts.find(item => item.name === name);
     if (result) {
@@ -80,6 +74,7 @@ removeHuman = (bookId) => {
   })
 }
   render() {
+    
     const { filter } = this.state;
     const getFilteredPeople = this.getFilteredPeople();
     return (
@@ -95,3 +90,4 @@ removeHuman = (bookId) => {
 }
 
 export default App;
+
