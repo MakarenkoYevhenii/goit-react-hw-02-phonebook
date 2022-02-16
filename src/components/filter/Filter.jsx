@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 
 const Filter = ({filter, handleChange}) => {    
+    
     return (
 
         <div className="form-group">

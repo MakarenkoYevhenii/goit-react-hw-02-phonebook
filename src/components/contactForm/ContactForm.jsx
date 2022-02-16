@@ -3,13 +3,32 @@ import PropTypes from 'prop-types';
 import { Component } from 'react';
 
 class ContactForm extends Component {
+
+  state={
+    name:"dfsdf",
+    number:"654654",
+  }
+  handleSubmit = e => {
+    e.preventDefault();
+    // console.log(this.state.name,this.state.number);
+    this.props.addContact(this.state.name, this.state.number)
+  };
+
+  handleChange = e => {
+    const { name, value } = e.target;
+    // console.log(name);
+    this.setState({
+      [name]: value,
+    });
+  };
+  
     render(){
     return (
-         <form onSubmit={this.props.handleSubmit} className={styles.form__style}>
+         <form onSubmit={this.handleSubmit} className={styles.form__style}>
           <div className={styles.form__registration}>
             <p>Name</p>
             <input
-              onChange={this.props.handleChange}
+              onChange={this.handleChange}
               type="text"
               name="name"
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -19,7 +38,7 @@ class ContactForm extends Component {
             />
             <p>Phone</p>
             <input
-              onChange={this.props.handleChange}
+              onChange={this.handleChange}
               type="tel"
               name="number"
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -36,6 +55,5 @@ class ContactForm extends Component {
 export default ContactForm;
 
 ContactForm.propTypes={
-handleChange:PropTypes.func.isRequired,
-handleSubmit:PropTypes.func.isRequired,
+addContact:PropTypes.func.isRequired,
 }

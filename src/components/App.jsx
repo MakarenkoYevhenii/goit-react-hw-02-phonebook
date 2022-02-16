@@ -14,22 +14,11 @@ class App extends Component {
     ],
     filter:'',
   };
-  handleSubmit = e => {
-    e.preventDefault();
-    // console.log(this.state.name,this.state.number);
-    this.addContact(this.state.name, this.state.number);
-  };
-  handleChange = e => {
-    const { name, value } = e.target;
-    // console.log(name);
-    this.setState({
-      [name]: value,
-    });
-  };
+
   
   addContact = (name, number) => {
     const { contacts } = this.state;
-    const result = contacts.find(item => item.name === name);
+    const result = contacts.find(item => item.name.toLowerCase() === name.toLowerCase());
     if (result) {
         alert(`${name} уже есть в списке`);
         return;
@@ -69,6 +58,13 @@ removeHuman = (bookId) => {
       }
   })
 }
+handleChange = e => {
+  const { name, value } = e.target;
+  // console.log(name);
+  this.setState({
+    [name]: value,
+  });
+};
   render() {
     
     const { filter } = this.state;
@@ -76,7 +72,7 @@ removeHuman = (bookId) => {
     return (
       <div className='registration__form'>
         <h1>Phonebook</h1>
-        <ContactForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} onSubmit={this.addContact} />
+        <ContactForm  addContact={this.addContact} />
         <h2>Contacts</h2>
         <Filter handleChange={this.handleChange} filter={filter}  />
         <ContactList names={FilteredPeople} removeHuman={this.removeHuman} />
