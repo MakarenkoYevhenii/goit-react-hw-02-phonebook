@@ -12,8 +12,6 @@ class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-    name: '',
-    number: '',
     filter:'',
   };
   handleSubmit = e => {
@@ -74,14 +72,14 @@ removeHuman = (bookId) => {
   render() {
     
     const { filter } = this.state;
-    const getFilteredPeople = this.getFilteredPeople();
+    const FilteredPeople = this.getFilteredPeople();
     return (
       <div className='registration__form'>
         <h1>Phonebook</h1>
-        <ContactForm handleChange={this.handleChange} handleSubmit={this.handleSubmit}  />
+        <ContactForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} onSubmit={this.addContact} />
         <h2>Contacts</h2>
         <Filter handleChange={this.handleChange} filter={filter}  />
-        <ContactList names={getFilteredPeople} removeHuman={this.removeHuman} />
+        <ContactList names={FilteredPeople} removeHuman={this.removeHuman} />
       </div>
     );
   }

@@ -1,13 +1,15 @@
 import styles from '../contactForm/contactForm.module.css'
 import PropTypes from 'prop-types';
+import { Component } from 'react';
 
-const ContactForm = ({handleSubmit, handleChange}) => {
+class ContactForm extends Component {
+    render(){
     return (
-         <form onSubmit={handleSubmit} className={styles.form__style}>
+         <form onSubmit={this.props.handleSubmit} className={styles.form__style}>
           <div className={styles.form__registration}>
             <p>Name</p>
             <input
-              onChange={handleChange}
+              onChange={this.props.handleChange}
               type="text"
               name="name"
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -17,7 +19,7 @@ const ContactForm = ({handleSubmit, handleChange}) => {
             />
             <p>Phone</p>
             <input
-              onChange={handleChange}
+              onChange={this.props.handleChange}
               type="tel"
               name="number"
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -28,7 +30,7 @@ const ContactForm = ({handleSubmit, handleChange}) => {
             <button type="submit" className={styles.button__submit}>Add Contact</button>
           </div>
         </form>     
-    );
+    )};
   }
 
 export default ContactForm;
